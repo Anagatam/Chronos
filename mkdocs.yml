@@ -1,0 +1,47 @@
+site_name: Chronos Forecast
+site_description: An advanced time series forecasting engine built for institutional performance.
+site_author: Anagatam Technologies
+site_url: https://anagatam.github.io/Chronos/
+
+repo_name: Anagatam/Chronos
+repo_url: https://github.com/Anagatam/Chronos
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - md_in_html
+  - tables
+  - admonition
+  - pymdownx.details
+
+nav:
+  - Home: index.md

@@ -1,6 +1,6 @@
 <h1 align="center">🕐 Chronos</h1>
 <p align="center">
-  <strong>The Institutional-Grade Time Series Forecasting Engine</strong><br>
+  <strong>The Institutional-Grade Time Series Forecasting Engine</strong><br/>
   <em>Trend · Seasonality · Changepoints · Holidays · Regressors — One facade. Pure NumPy/SciPy. 10-100× faster than Prophet.</em>
 </p>
 

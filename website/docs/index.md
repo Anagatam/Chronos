@@ -429,7 +429,7 @@ pytest tests/test_chronos.py -v          # Run tests
 pytest tests/test_chronos.py -v --cov    # With coverage
 ```
 
-**55+ tests passing** in <2 seconds.
+**55+ tests passing** in \< 2 seconds.
 
 ---
 

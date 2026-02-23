@@ -23,7 +23,6 @@
 <p align="center">
   <a href="https://pypi.org/project/chronos-forecast/"><img src="https://img.shields.io/pypi/pyversions/chronos-forecast" alt="Python"></a>
   <a href="https://pypi.org/project/chronos-forecast/"><img src="https://img.shields.io/pypi/v/chronos-forecast?label=version&color=green" alt="Version"></a>
-  <img src="https://img.shields.io/badge/Prophet_Killer-Taylor%20%26%20Letham%202018-7A0177" alt="Prophet Killer">
   <img src="https://img.shields.io/badge/PELT-Killick%20et%20al%202012-AE017E" alt="PELT">
   <img src="https://img.shields.io/badge/Fourier_Seasonality-Harvey%201990-DD3497" alt="Fourier">
 </p>
@@ -82,7 +81,7 @@ forecast = model.predict(periods=365)
 
 | | What | Why it matters |
 |---|------|---------------|
-| ⚡ | **10-100× faster than Prophet** | Pure NumPy/SciPy. No Stan/MCMC overhead. Fits 3 years of daily data in <100ms. |
+| ⚡ | **10-100× faster than Prophet** | Pure NumPy/SciPy. No Stan/MCMC overhead. Fits 3 years of daily data in < 100ms. |
 | 📐 | **Three trend models** | Linear, logistic (saturating), flat — with automatic changepoint detection. |
 | 🎵 | **Fourier multi-seasonality** | Weekly, monthly, quarterly, annual + custom periods. Auto-detected. Ridge-regularized. |
 | 🔍 | **Advanced changepoint detection** | PELT + Binary Segmentation. Automatic BIC penalty. Far superior to Prophet's L1. |

@@ -51,9 +51,9 @@ model.fit(df)  # df has 'ds' and 'y' columns
 forecast = model.predict(periods=365)
 ```
 
-> [!NOTE]
-> **Chronos Pro** — featuring DCC-GARCH covariance, Bayesian Online Changepoint Detection, deep learning ensembles, real-time streaming, and enterprise support — is under active development.
-> [📩 Sign up for early access →](https://github.com/Anagatam/Chronos/issues)
+:::note
+**Chronos Pro** — featuring DCC-GARCH covariance, Bayesian Online Changepoint Detection, deep learning ensembles, real-time streaming, and enterprise support — is under active development.
+[📩 Sign up for early access →](https://github.com/Anagatam/Chronos/issues)
 
 ---
 
@@ -297,7 +297,7 @@ Two algorithms (both superior to Prophet's approach):
 | **PELT** | O(T) expected | Exact optimal segmentation (default) |
 | **Binary Segmentation** | O(T·log(T)) | Fast for very long series |
 
-Automatic BIC penalty selection: `β = log(T)`.
+Automatic BIC penalty selection: `beta = log(T)`.
 
 ---
 
@@ -495,8 +495,8 @@ pytest tests/test_chronos.py -v --cov    # With coverage
 
 **Apache License 2.0** — Copyright © 2026 [Anagatam Technologies](https://github.com/Anagatam). All rights reserved.
 
-> [!CAUTION]
-> **Not investment advice.** Chronos is a mathematical software library for educational and research purposes only. It does not provide financial recommendations or trading signals. Consult a licensed financial professional before making investment decisions. See [DISCLAIMER.md](https://github.com/Anagatam/Chronos/blob/main/DISCLAIMER.md) for SEC, SEBI, and global regulatory compliance.
+:::caution
+**Not investment advice.** Chronos is a mathematical software library for educational and research purposes only. It does not provide financial recommendations or trading signals. Consult a licensed financial professional before making investment decisions. See [DISCLAIMER.md](https://github.com/Anagatam/Chronos/blob/main/DISCLAIMER.md) for SEC, SEBI, and global regulatory compliance.
 
 ---
 
@@ -511,3 +511,4 @@ pytest tests/test_chronos.py -v --cov    # With coverage
   <a href="https://github.com/Anagatam/Chronos/issues">🐛 Issues</a> ·
   <a href="https://github.com/Anagatam/Chronos/blob/main/DISCLAIMER.md">⚖️ Disclaimer</a>
 </p>
+:::

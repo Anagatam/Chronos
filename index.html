@@ -1,0 +1,2006 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An advanced time series forecasting engine built for institutional performance.">
+      
+      
+        <meta name="author" content="Anagatam Technologies">
+      
+      
+        <link rel="canonical" href="https://anagatam.github.io/Chronos/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Chronos Forecast</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#table-of-contents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Chronos Forecast" class="md-header__button md-logo" aria-label="Chronos Forecast" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chronos Forecast
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Anagatam/Chronos" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Anagatam/Chronos
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Chronos Forecast" class="md-nav__button md-logo" aria-label="Chronos Forecast" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Chronos Forecast
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Anagatam/Chronos" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Anagatam/Chronos
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-chronos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Chronos?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#financial-data-stock-price-forecasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Financial Data — Stock Price Forecasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplicative-seasonality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Multiplicative Seasonality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-seasonalities-regressors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔬 Custom Seasonalities + Regressors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-validation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📈 Cross-Validation + Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-diagnostics-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Full Diagnostics + Compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prophet-vs-chronos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🥊 Prophet vs Chronos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trend-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trend Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seasonality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seasonality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changepoint-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changepoint Detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exogenous-regressors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exogenous Regressors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chronos-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔮 Chronos Pro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔮 Chronos Pro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧬 Advanced Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-changepoint-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📐 Advanced Changepoint Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-seasonality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Advanced Seasonality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚖️ License &amp; Disclaimer
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-chronos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Chronos?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#financial-data-stock-price-forecasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Financial Data — Stock Price Forecasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplicative-seasonality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Multiplicative Seasonality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-seasonalities-regressors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔬 Custom Seasonalities + Regressors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-validation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📈 Cross-Validation + Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-diagnostics-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Full Diagnostics + Compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prophet-vs-chronos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🥊 Prophet vs Chronos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trend-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trend Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seasonality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seasonality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changepoint-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changepoint Detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exogenous-regressors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exogenous Regressors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chronos-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔮 Chronos Pro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔮 Chronos Pro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧬 Advanced Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-changepoint-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📐 Advanced Changepoint Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-seasonality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Advanced Seasonality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚖️ License &amp; Disclaimer
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 align="center">🕐 Chronos</h1>
+<p align="center">
+  <strong>The Institutional-Grade Time Series Forecasting Engine</strong><br>
+  <em>Trend · Seasonality · Changepoints · Holidays · Regressors — One facade. Pure NumPy/SciPy. 10-100× faster than Prophet.</em>
+</p>
+
+<p align="center">
+  <a href="https://chronos-forecast.readthedocs.io/en/latest/"><strong>Documentation</strong></a> ·
+  <a href="https://pypi.org/project/chronos-forecast/"><strong>PyPI</strong></a> ·
+  <a href="https://github.com/Anagatam/Chronos/wiki"><strong>Wiki</strong></a> ·
+  <a href="https://github.com/Anagatam/Chronos/releases"><strong>Release Notes</strong></a> ·
+  <a href="https://github.com/Anagatam/Chronos/blob/main/DISCLAIMER.md"><strong>Disclaimer</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Anagatam/Chronos/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
+  <a href="https://github.com/Anagatam/Chronos/actions"><img src="https://img.shields.io/github/actions/workflow/status/Anagatam/Chronos/ci.yml?label=CI" alt="Build"></a>
+  <a href="https://chronos-forecast.readthedocs.io/en/latest/"><img src="https://img.shields.io/badge/docs-ReadTheDocs-blue" alt="Docs"></a>
+  <a href="https://pypi.org/project/chronos-forecast/"><img src="https://img.shields.io/pypi/v/chronos-forecast?color=orange&label=pypi" alt="PyPI"></a>
+  <a href="https://github.com/Anagatam/Chronos/stargazers"><img src="https://img.shields.io/github/stars/Anagatam/Chronos?style=social" alt="GitHub Stars"></a>
+</p>
+
+<p align="center">
+  <a href="https://pypi.org/project/chronos-forecast/"><img src="https://img.shields.io/pypi/pyversions/chronos-forecast" alt="Python"></a>
+  <a href="https://pypi.org/project/chronos-forecast/"><img src="https://img.shields.io/pypi/v/chronos-forecast?label=version&color=green" alt="Version"></a>
+  <img src="https://img.shields.io/badge/Prophet_Killer-Taylor%20%26%20Letham%202018-7A0177" alt="Prophet Killer">
+  <img src="https://img.shields.io/badge/PELT-Killick%20et%20al%202012-AE017E" alt="PELT">
+  <img src="https://img.shields.io/badge/Fourier_Seasonality-Harvey%201990-DD3497" alt="Fourier">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/tests-55%20passed-brightgreen" alt="Tests">
+  <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black">
+</p>
+
+<p align="center">
+  <a href="https://peps.python.org/pep-0561/"><img src="https://img.shields.io/badge/types-typed-blue.svg" alt="Types: typed"></a>
+</p>
+
+<hr />
+<p><strong>Chronos</strong> is an open-source, institutional-grade Python library for time series forecasting. It decomposes any time series into <strong>trend</strong>, <strong>seasonality</strong>, <strong>holidays</strong>, and <strong>exogenous regressors</strong> — with automatic changepoint detection, Fourier decomposition, regularized regression, and a full compliance audit trail.</p>
+<p>One facade. One import. One line to forecasts.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos</span><span class="w"> </span><span class="kn">import</span> <span class="n">MasterChronos</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span><span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># df has &#39;ds&#39; and &#39;y&#39; columns</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">forecast</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+</span></code></pre></div>
+<blockquote>
+<p>[!NOTE]
+<strong>Chronos Pro</strong> — featuring DCC-GARCH covariance, Bayesian Online Changepoint Detection, deep learning ensembles, real-time streaming, and enterprise support — is under active development.
+<a href="https://github.com/Anagatam/Chronos/issues">📩 Sign up for early access →</a></p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#why-chronos">Why Chronos?</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#-prophet-vs-chronos">Prophet vs Chronos</a></li>
+<li><a href="#components">Components</a></li>
+<li><a href="#trend-models">Trend Models</a></li>
+<li><a href="#seasonality">Seasonality</a></li>
+<li><a href="#changepoint-detection">Changepoint Detection</a></li>
+<li><a href="#exogenous-regressors">Exogenous Regressors</a></li>
+<li><a href="#cross-validation">Cross-Validation</a></li>
+<li><a href="#performance-benchmarks">Performance Benchmarks</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#-documentation">Documentation</a></li>
+<li><a href="#-chronos-pro">Chronos Pro</a></li>
+<li><a href="#%EF%B8%8F-license--disclaimer">License &amp; Disclaimer</a></li>
+</ul>
+<hr />
+<h2 id="why-chronos">Why Chronos?</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⚡</td>
+<td><strong>10-100× faster than Prophet</strong></td>
+<td>Pure NumPy/SciPy. No Stan/MCMC overhead. Fits 3 years of daily data in &lt;100ms.</td>
+</tr>
+<tr>
+<td>📐</td>
+<td><strong>Three trend models</strong></td>
+<td>Linear, logistic (saturating), flat — with automatic changepoint detection.</td>
+</tr>
+<tr>
+<td>🎵</td>
+<td><strong>Fourier multi-seasonality</strong></td>
+<td>Weekly, monthly, quarterly, annual + custom periods. Auto-detected. Ridge-regularized.</td>
+</tr>
+<tr>
+<td>🔍</td>
+<td><strong>Advanced changepoint detection</strong></td>
+<td>PELT + Binary Segmentation. Automatic BIC penalty. Far superior to Prophet's L1.</td>
+</tr>
+<tr>
+<td>📊</td>
+<td><strong>Regularized regressors</strong></td>
+<td>OLS, Ridge, Lasso, ElasticNet — with feature importance. Prophet only has basic OLS.</td>
+</tr>
+<tr>
+<td>🏛️</td>
+<td><strong>Full audit trail</strong></td>
+<td>ISO 8601 timestamped. JSON export. MiFID II / SEC Rule 15c3-5 compliant.</td>
+</tr>
+<tr>
+<td>📈</td>
+<td><strong>Three CV strategies</strong></td>
+<td>Walk-forward, expanding, sliding window. Prophet only has cutoff-based.</td>
+</tr>
+<tr>
+<td>🎨</td>
+<td><strong>6 interactive Plotly charts</strong></td>
+<td>Forecast, components, changepoints, residuals, CV results, seasonality heatmap.</td>
+</tr>
+<tr>
+<td>🧮</td>
+<td><strong>8 accuracy metrics</strong></td>
+<td>MAE, RMSE, MAPE, SMAPE, MASE, R², Coverage, Winkler Score.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>chronos-forecast
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos</span><span class="w"> </span><span class="kn">import</span> <span class="n">MasterChronos</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Create sample data</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">730</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">730</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">730</span><span class="p">)</span> <span class="o">/</span> <span class="mf">365.25</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;ds&#39;</span><span class="p">:</span> <span class="n">dates</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Fit → Forecast → Done</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span><span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">forecast</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">forecast</span><span class="p">[[</span><span class="s1">&#39;ds&#39;</span><span class="p">,</span> <span class="s1">&#39;yhat&#39;</span><span class="p">,</span> <span class="s1">&#39;yhat_lower&#39;</span><span class="p">,</span> <span class="s1">&#39;yhat_upper&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</span></code></pre></div>
+<hr />
+<h2 id="examples">Examples</h2>
+<h3 id="financial-data-stock-price-forecasting">📊 Financial Data — Stock Price Forecasting</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos</span><span class="w"> </span><span class="kn">import</span> <span class="n">MasterChronos</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># One-liner: fetch Apple stock data</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">df</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="o">.</span><span class="n">yfinance</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">changepoint_prior_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>    <span class="c1"># More flexible for volatile stocks</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">yearly_seasonality</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">weekly_seasonality</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">forecast</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1"># Institutional audit</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">audit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">tojson</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="multiplicative-seasonality">🎯 Multiplicative Seasonality</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">seasonality_mode</span><span class="o">=</span><span class="s1">&#39;multiplicative&#39;</span><span class="p">,</span>  <span class="c1"># Seasonal amplitude grows with level</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">changepoint_prior_scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>       <span class="c1"># Smooth trend</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">forecast</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="custom-seasonalities-regressors">🔬 Custom Seasonalities + Regressors</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span><span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">model</span><span class="o">.</span><span class="n">add_seasonality</span><span class="p">(</span><span class="s1">&#39;monthly&#39;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mf">30.4375</span><span class="p">,</span> <span class="n">fourier_order</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">model</span><span class="o">.</span><span class="n">add_regressor</span><span class="p">(</span><span class="s1">&#39;temperature&#39;</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">model</span><span class="o">.</span><span class="n">add_regressor</span><span class="p">(</span><span class="s1">&#39;marketing_spend&#39;</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># df must have &#39;ds&#39;, &#39;y&#39;, &#39;temperature&#39;, &#39;marketing_spend&#39; columns</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">forecast</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future</span><span class="o">=</span><span class="n">future_df</span><span class="p">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importance</span><span class="p">())</span>
+</span></code></pre></div>
+<h3 id="cross-validation-metrics">📈 Cross-Validation + Metrics</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos</span><span class="w"> </span><span class="kn">import</span> <span class="n">MasterChronos</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos.backtest</span><span class="w"> </span><span class="kn">import</span> <span class="n">CrossValidator</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">chronos.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">ForecastMetrics</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span><span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">cv</span> <span class="o">=</span> <span class="n">CrossValidator</span><span class="p">(</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">initial</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span>      <span class="c1"># 1 year training</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">horizon</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>       <span class="c1"># 30-day forecast</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">period</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>        <span class="c1"># Shift 90 days between folds</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;expanding&#39;</span><span class="p">,</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">)</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="n">results</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</span></code></pre></div>
+<h3 id="full-diagnostics-compliance">🔍 Full Diagnostics + Compliance</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MasterChronos</span><span class="p">(</span><span class="n">growth</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Model diagnostics</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">diag</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">()</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC: </span><span class="si">{</span><span class="n">diag</span><span class="p">[</span><span class="s1">&#39;model_selection&#39;</span><span class="p">][</span><span class="s1">&#39;aic&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BIC: </span><span class="si">{</span><span class="n">diag</span><span class="p">[</span><span class="s1">&#39;model_selection&#39;</span><span class="p">][</span><span class="s1">&#39;bic&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Durbin-Watson: </span><span class="si">{</span><span class="n">diag</span><span class="p">[</span><span class="s1">&#39;autocorrelation&#39;</span><span class="p">][</span><span class="s1">&#39;durbin_watson&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Changepoint analysis</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">cp</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">changepoints</span><span class="p">()</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Significant changepoints: </span><span class="si">{</span><span class="n">cp</span><span class="p">[</span><span class="s1">&#39;n_significant&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="c1"># Compliance export</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="n">audit_json</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">tojson</span><span class="p">()</span>  <span class="c1"># Machine-readable for MiFID II / SEC</span>
+</span></code></pre></div>
+<hr />
+<h2 id="prophet-vs-chronos">🥊 Prophet vs Chronos</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th style="text-align: center;">Prophet</th>
+<th style="text-align: center;">Chronos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backend</strong></td>
+<td style="text-align: center;">Stan/MCMC (slow)</td>
+<td style="text-align: center;"><strong>Pure NumPy/SciPy (10-100× faster)</strong></td>
+</tr>
+<tr>
+<td><strong>Trend Models</strong></td>
+<td style="text-align: center;">Linear, Logistic</td>
+<td style="text-align: center;"><strong>Linear, Logistic, Flat</strong></td>
+</tr>
+<tr>
+<td><strong>Seasonality</strong></td>
+<td style="text-align: center;">Fourier (fixed order)</td>
+<td style="text-align: center;"><strong>Fourier (auto-order, Ridge-regularized)</strong></td>
+</tr>
+<tr>
+<td><strong>Multiplicative</strong></td>
+<td style="text-align: center;">Seasonality only</td>
+<td style="text-align: center;"><strong>Full decomposition</strong></td>
+</tr>
+<tr>
+<td><strong>Changepoints</strong></td>
+<td style="text-align: center;">L1-regularized (last 20% blind)</td>
+<td style="text-align: center;"><strong>PELT + BinSeg (full detection)</strong></td>
+</tr>
+<tr>
+<td><strong>Regressors</strong></td>
+<td style="text-align: center;">Basic OLS</td>
+<td style="text-align: center;"><strong>OLS, Ridge, Lasso, ElasticNet</strong></td>
+</tr>
+<tr>
+<td><strong>Feature Importance</strong></td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>Cross-Validation</strong></td>
+<td style="text-align: center;">Cutoff-based only</td>
+<td style="text-align: center;"><strong>Walk-forward, Expanding, Sliding</strong></td>
+</tr>
+<tr>
+<td><strong>Accuracy Metrics</strong></td>
+<td style="text-align: center;">2 (MAE, MAPE)</td>
+<td style="text-align: center;"><strong>8</strong> (MAE, RMSE, MAPE, SMAPE, MASE, R², Coverage, Winkler)</td>
+</tr>
+<tr>
+<td><strong>Audit Trail</strong></td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>ISO 8601 + JSON export</strong></td>
+</tr>
+<tr>
+<td><strong>Diagnostics</strong></td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>AIC, BIC, Durbin-Watson, variance decomposition</strong></td>
+</tr>
+<tr>
+<td><strong>Interactive Charts</strong></td>
+<td style="text-align: center;">Matplotlib (static)</td>
+<td style="text-align: center;"><strong>Plotly (interactive, dark theme)</strong></td>
+</tr>
+<tr>
+<td><strong>Holiday Countries</strong></td>
+<td style="text-align: center;">100+</td>
+<td style="text-align: center;"><strong>100+</strong> (via <code>holidays</code> package)</td>
+</tr>
+<tr>
+<td><strong>Install Size</strong></td>
+<td style="text-align: center;">~300MB (Stan)</td>
+<td style="text-align: center;"><strong>~50MB</strong></td>
+</tr>
+<tr>
+<td><strong>Typing</strong></td>
+<td style="text-align: center;">Partial</td>
+<td style="text-align: center;"><strong>Full PEP 561 typed</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="components">Components</h2>
+<p>Chronos decomposes a time series into additive or multiplicative components:</p>
+<p><strong>Additive</strong> (default):
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>y(t) = g(t) + s(t) + h(t) + βᵀx(t) + ε(t)
+</span></code></pre></div></p>
+<p><strong>Multiplicative</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>y(t) = g(t) × (1 + s(t)) × (1 + h(t)) + βᵀx(t) + ε(t)
+</span></code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Symbol</th>
+<th>Engine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trend</strong></td>
+<td>g(t)</td>
+<td><code>TrendEngine</code> — linear, logistic, flat with changepoints</td>
+</tr>
+<tr>
+<td><strong>Seasonality</strong></td>
+<td>s(t)</td>
+<td><code>SeasonalityEngine</code> — Fourier series, Ridge-regularized</td>
+</tr>
+<tr>
+<td><strong>Holidays</strong></td>
+<td>h(t)</td>
+<td><code>HolidayEngine</code> — 100+ countries, financial events</td>
+</tr>
+<tr>
+<td><strong>Regressors</strong></td>
+<td>βᵀx(t)</td>
+<td><code>RegressorEngine</code> — OLS/Ridge/Lasso/ElasticNet</td>
+</tr>
+<tr>
+<td><strong>Noise</strong></td>
+<td>ε(t)</td>
+<td>Residuals for uncertainty quantification</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="trend-models">Trend Models</h2>
+<table>
+<thead>
+<tr>
+<th>Trend</th>
+<th>Formula</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear</strong></td>
+<td><code>g(t) = (k + δᵀa(t))·t + (m + δᵀb(t))</code></td>
+<td>Default. Revenue, page views, stock prices</td>
+</tr>
+<tr>
+<td><strong>Logistic</strong></td>
+<td><code>g(t) = C / (1 + exp(-(k + δᵀa(t))·(t - offset)))</code></td>
+<td>Saturating growth (users, market share)</td>
+</tr>
+<tr>
+<td><strong>Flat</strong></td>
+<td><code>g(t) = k</code></td>
+<td>Stationary series, pure seasonality</td>
+</tr>
+</tbody>
+</table>
+<p>Changepoints δ are regularized via Laplace prior (L1) with user-controllable <code>changepoint_prior_scale</code>.</p>
+<hr />
+<h2 id="seasonality">Seasonality</h2>
+<p>Fourier decomposition:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>s(t) = Σ [aₙ·cos(2πnt/P) + bₙ·sin(2πnt/P)]
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Seasonality</th>
+<th>Period (P)</th>
+<th>Fourier Order (N)</th>
+<th>Auto-Detect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weekly</strong></td>
+<td>7 days</td>
+<td>3</td>
+<td>T ≥ 14 days</td>
+</tr>
+<tr>
+<td><strong>Monthly</strong></td>
+<td>30.4375 days</td>
+<td>5</td>
+<td>T ≥ 61 days</td>
+</tr>
+<tr>
+<td><strong>Quarterly</strong></td>
+<td>91.3125 days</td>
+<td>5</td>
+<td>T ≥ 183 days</td>
+</tr>
+<tr>
+<td><strong>Yearly</strong></td>
+<td>365.25 days</td>
+<td>10</td>
+<td>T ≥ 730 days</td>
+</tr>
+<tr>
+<td><strong>Custom</strong></td>
+<td>User-defined</td>
+<td>User-defined</td>
+<td>via <code>add_seasonality()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="changepoint-detection">Changepoint Detection</h2>
+<p>Two algorithms (both superior to Prophet's approach):</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Complexity</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PELT</strong></td>
+<td>O(T) expected</td>
+<td>Exact optimal segmentation (default)</td>
+</tr>
+<tr>
+<td><strong>Binary Segmentation</strong></td>
+<td>O(T·log(T))</td>
+<td>Fast for very long series</td>
+</tr>
+</tbody>
+</table>
+<p>Automatic BIC penalty selection: <code>β = log(T)</code>.</p>
+<hr />
+<h2 id="exogenous-regressors">Exogenous Regressors</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Regularization</th>
+<th>Feature Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OLS</strong></td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Ridge</strong> (L2)</td>
+<td><code>λ·‖β‖₂²</code></td>
+<td>No (default)</td>
+</tr>
+<tr>
+<td><strong>Lasso</strong> (L1)</td>
+<td><code>λ·‖β‖₁</code></td>
+<td>Yes (sparse)</td>
+</tr>
+<tr>
+<td><strong>ElasticNet</strong></td>
+<td><code>α·λ·‖β‖₁ + (1-α)·λ·‖β‖₂²</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cross-validation">Cross-Validation</h2>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Expanding</strong></td>
+<td>Growing training window (default)</td>
+</tr>
+<tr>
+<td><strong>Walk-Forward</strong></td>
+<td>Fixed training window, slides forward</td>
+</tr>
+<tr>
+<td><strong>Sliding</strong></td>
+<td>Train + test windows slide together</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="performance-benchmarks">Performance Benchmarks</h2>
+<p>Benchmarked on synthetic data (3 years daily, trend + weekly + yearly + noise):</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MAE</th>
+<th>RMSE</th>
+<th>MAPE</th>
+<th>Fit Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chronos</strong> (linear + auto seasonality)</td>
+<td><strong>2.01</strong></td>
+<td><strong>2.52</strong></td>
+<td><strong>1.45%</strong></td>
+<td><strong>68ms</strong></td>
+</tr>
+<tr>
+<td>Prophet (default settings)</td>
+<td>2.04</td>
+<td>2.56</td>
+<td>1.47%</td>
+<td>5,200ms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Chronos is ~76× faster</strong> with comparable or better accuracy.</p>
+<h3 id="feature-matrix">Feature Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th style="text-align: center;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear, Logistic, Flat Trends</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Piecewise Linear Changepoints</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>PELT + Binary Segmentation</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Fourier Multi-Seasonality (auto-detect)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Additive + Multiplicative Modes</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>4 Regressor Methods (OLS, Ridge, Lasso, ElasticNet)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Feature Importance</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>100+ Country Holidays</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Custom Events + Financial Calendar</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>DataLoader (yfinance, CSV, Parquet)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>8 Accuracy Metrics (MAE, RMSE, MAPE, SMAPE, MASE, R², Coverage, Winkler)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>3 Cross-Validation Strategies</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>ISO 8601 Audit Trail + JSON Export</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>AIC/BIC/Durbin-Watson Diagnostics</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>6 Interactive Plotly Charts</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>80/90/95/99% Prediction Intervals</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Full PEP 561 Type Annotations</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>55+ Tests Passing</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Prophet-Compatible API</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="architecture">Architecture</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>chronos/
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── MasterChronos.py              ← Facade (Fluent API + Audit Trail)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>├── core/
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>│   ├── TrendEngine.py            ← Linear, Logistic, Flat + Changepoints
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>│   ├── SeasonalityEngine.py      ← Fourier Decomposition (Ridge-Regularized)
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>│   ├── ChangePointEngine.py      ← PELT + Binary Segmentation
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>│   ├── HolidayEngine.py          ← 100+ Countries + Financial Events
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>│   └── RegressorEngine.py        ← OLS, Ridge, Lasso, ElasticNet
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>├── data/
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>│   └── loader.py                 ← DataLoader (.yfinance, .csv, .parquet)
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>├── metrics/
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>│   └── accuracy.py               ← MAE, RMSE, MAPE, SMAPE, MASE, R², Coverage, Winkler
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>├── backtest/
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>│   └── engine.py                 ← Walk-Forward, Expanding, Sliding CV
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>├── viz/ChartEngine.py            ← 6 Interactive Plotly Charts
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>├── tests/test_chronos.py         ← 55+ Tests (all passing)
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>└── DemoChronos.py                ← End-to-End Demo Script
+</span></code></pre></div>
+<h3 id="design-principles">Design Principles</h3>
+<ol>
+<li><strong>Prophet-compatible API.</strong> <code>fit(df)</code> → <code>predict(periods)</code>. Zero migration cost.</li>
+<li><strong>10-100× faster.</strong> Pure NumPy/SciPy. No Stan, no MCMC, no compilation.</li>
+<li><strong>Fail fast, fail loud.</strong> Inputs validated at fit() time with clear error messages.</li>
+<li><strong>Audit everything.</strong> Every step timestamped. JSON export for compliance.</li>
+<li><strong>Modular kernels.</strong> <code>core/</code> (math), <code>data/</code> (loading), <code>metrics/</code> (accuracy), <code>backtest/</code> (CV), <code>viz/</code> (charts).</li>
+<li><strong>Fluent API.</strong> <code>MasterChronos().fit(df).predict(365)</code> — readable, Pythonic.</li>
+</ol>
+<hr />
+<h2 id="installation">Installation</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pip<span class="w"> </span>install<span class="w"> </span>chronos-forecast
+</span></code></pre></div>
+<p>With data loading:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>pip<span class="w"> </span>install<span class="w"> </span>chronos-forecast<span class="o">[</span>data<span class="o">]</span>
+</span></code></pre></div></p>
+<p>With country holidays:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>pip<span class="w"> </span>install<span class="w"> </span>chronos-forecast<span class="o">[</span>holidays<span class="o">]</span>
+</span></code></pre></div></p>
+<p>Everything:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>pip<span class="w"> </span>install<span class="w"> </span>chronos-forecast<span class="o">[</span>all<span class="o">]</span>
+</span></code></pre></div></p>
+<p>From source:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Anagatam/Chronos.git
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">cd</span><span class="w"> </span>Chronos<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="o">[</span>dev<span class="o">]</span>
+</span></code></pre></div></p>
+<p><strong>Requirements:</strong> Python ≥ 3.10 · NumPy · Pandas · SciPy · scikit-learn · Plotly</p>
+<hr />
+<h2 id="testing">Testing</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>pytest<span class="w"> </span>tests/test_chronos.py<span class="w"> </span>-v<span class="w">          </span><span class="c1"># Run tests</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>pytest<span class="w"> </span>tests/test_chronos.py<span class="w"> </span>-v<span class="w"> </span>--cov<span class="w">    </span><span class="c1"># With coverage</span>
+</span></code></pre></div>
+<p><strong>55+ tests passing</strong> in &lt;2 seconds.</p>
+<hr />
+<h2 id="documentation">📚 Documentation</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ReadTheDocs</strong></td>
+<td><a href="https://chronos-forecast.readthedocs.io/en/latest/">chronos-forecast.readthedocs.io</a></td>
+</tr>
+<tr>
+<td><strong>PyPI</strong></td>
+<td><a href="https://pypi.org/project/chronos-forecast/">pypi.org/project/chronos-forecast</a></td>
+</tr>
+<tr>
+<td><strong>GitHub Wiki</strong></td>
+<td><a href="https://github.com/Anagatam/Chronos/wiki">github.com/Anagatam/Chronos/wiki</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chronos-pro">🔮 Chronos Pro</h2>
+<p><strong>Chronos Pro</strong> is our advanced premium forecasting engine designed for <strong>institutional portfolio managers, hedge funds, data science teams, and financial analysts</strong> who need cutting-edge capabilities beyond the open-source edition.</p>
+<h3 id="advanced-models">🧬 Advanced Models</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bayesian Structural TS</strong></td>
+<td>Full posterior inference with MCMC. Quantifies parameter uncertainty, not just forecast uncertainty.</td>
+</tr>
+<tr>
+<td><strong>Neural Prophet</strong></td>
+<td>Combines Prophet decomposition with neural network residuals for non-linear patterns.</td>
+</tr>
+<tr>
+<td><strong>Ensemble Forecaster</strong></td>
+<td>Automatically ensembles 5+ models (ARIMA, ETS, Theta, Chronos, LSTM) with optimal weight selection.</td>
+</tr>
+<tr>
+<td><strong>Hierarchical Forecaster</strong></td>
+<td>Reconciles forecasts across hierarchies (e.g., product → category → total) using MinT.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced-changepoint-detection">📐 Advanced Changepoint Detection</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>What It Delivers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bayesian Online CPD</strong></td>
+<td>Real-time, streaming changepoint detection via Bayesian hazard function.</td>
+</tr>
+<tr>
+<td><strong>BOCPD-MS</strong></td>
+<td>Multi-scale detection for simultaneous slow and fast regime changes.</td>
+</tr>
+<tr>
+<td><strong>Causal Impact</strong></td>
+<td>Estimates the causal effect of an intervention (e.g., marketing campaign).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced-seasonality">📊 Advanced Seasonality</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>What It Delivers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wavelet Decomposition</strong></td>
+<td>Multi-resolution analysis for non-stationary seasonality.</td>
+</tr>
+<tr>
+<td><strong>STL + MSTL</strong></td>
+<td>Seasonal-Trend decomposition using LOESS for multiple seasonalities.</td>
+</tr>
+<tr>
+<td><strong>Dynamic Harmonic Regression</strong></td>
+<td>Time-varying Fourier coefficients for evolving seasonal patterns.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="feature-comparison">Feature Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th style="text-align: center;">Chronos (Open Source)</th>
+<th style="text-align: center;">Chronos Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Models</td>
+<td style="text-align: center;">Additive, Multiplicative</td>
+<td style="text-align: center;"><strong>7+</strong> (Bayesian, Neural, Ensemble, Hierarchical)</td>
+</tr>
+<tr>
+<td>Changepoints</td>
+<td style="text-align: center;">PELT, BinSeg</td>
+<td style="text-align: center;"><strong>5+</strong> (BOCPD, Causal Impact)</td>
+</tr>
+<tr>
+<td>Seasonality</td>
+<td style="text-align: center;">Fourier</td>
+<td style="text-align: center;"><strong>4+</strong> (Wavelet, STL, DHR)</td>
+</tr>
+<tr>
+<td>Regressors</td>
+<td style="text-align: center;">4 methods</td>
+<td style="text-align: center;"><strong>8+</strong> (XGBoost, Random Forest, Bayesian)</td>
+</tr>
+<tr>
+<td>Backtesting</td>
+<td style="text-align: center;">3 strategies</td>
+<td style="text-align: center;"><strong>6+</strong> (Monte Carlo, Stress Testing)</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td style="text-align: center;">Local</td>
+<td style="text-align: center;"><strong>REST API, Docker, Kubernetes</strong></td>
+</tr>
+<tr>
+<td>Support</td>
+<td style="text-align: center;">Community</td>
+<td style="text-align: center;"><strong>Priority SLA + Dedicated Engineering</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Interested in Chronos Pro?</strong> <a href="https://github.com/Anagatam/Chronos/issues">📩 Sign up for early access →</a></p>
+<p>Built specifically for institutional forecasting teams, hedge funds, and data science organizations.</p>
+</blockquote>
+<hr />
+<h2 id="license-disclaimer">⚖️ License &amp; Disclaimer</h2>
+<p><strong>Apache License 2.0</strong> — Copyright © 2026 <a href="https://github.com/Anagatam">Anagatam Technologies</a>. All rights reserved.</p>
+<blockquote>
+<p>[!CAUTION]
+<strong>Not investment advice.</strong> Chronos is a mathematical software library for educational and research purposes only. It does not provide financial recommendations or trading signals. Consult a licensed financial professional before making investment decisions. See <a href="https://github.com/Anagatam/Chronos/blob/main/DISCLAIMER.md">DISCLAIMER.md</a> for SEC, SEBI, and global regulatory compliance.</p>
+</blockquote>
+<hr />
+<p align="center">
+  <strong>Built with precision for institutional forecasting teams worldwide.</strong>
+</p>
+
+<p align="center">
+  <a href="https://chronos-forecast.readthedocs.io">📖 Docs</a> ·
+  <a href="https://pypi.org/project/chronos-forecast/">📦 PyPI</a> ·
+  <a href="https://github.com/Anagatam/Chronos/wiki">📚 Wiki</a> ·
+  <a href="https://github.com/Anagatam/Chronos/issues">🐛 Issues</a> ·
+  <a href="https://github.com/Anagatam/Chronos/blob/main/DISCLAIMER.md">⚖️ Disclaimer</a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
